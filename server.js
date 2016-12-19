@@ -6,32 +6,32 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var fs 				 = require('fs');
 // var prependFile = require('prepend-file');
-// var FileStreamRotator = require('file-stream-rotator');
+var FileStreamRotator = require('file-stream-rotator');
 var app        = express();
-// var morgan     = require('morgan');
+var morgan     = require('morgan');
 
 var logDirectory = __dirname + '/logs';
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 // create a write stream (in append mode)
-// var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {
-//   flags: 'w',
-//   defaultEncoding: 'utf8',
-//   fd: 0,
-//   mode: 0o666,
-//   autoClose: true
-// });
+var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {
+  flags: 'w',
+  defaultEncoding: 'utf8',
+  fd: 0,
+  mode: 0o666,
+  autoClose: true
+});
 
 // setup the logger
 // morgan(format, options)
-//app.use(morgan('combined', {stream: accessLogStream}));
+// app.use(morgan('combined', {stream: accessLogStream}));
 
 
 
 
 // configure app
-//app.use(morgan('dev', {stream: accessLogStream})); // log requests to the console
+app.use(morgan('dev', {stream: accessLogStream})); // log requests to the console
 
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
