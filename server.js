@@ -10,7 +10,7 @@ var fs 				 = require('fs');
 var app        = express();
 // var morgan     = require('morgan');
 
-var logDirectory = __dirname + '/log';
+var logDirectory = __dirname + '/logs';
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 

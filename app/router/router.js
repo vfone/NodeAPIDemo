@@ -11,7 +11,7 @@ var Bear            = appConfig.Bear;
 // middleware to use for all requests
 router.use(function(req, res, next) {
 	// //write to access log
-  var logFile = appConfig.rootPath + '/log/access-'+appHelper.fullDate+'.log';
+  var logFile = appConfig.rootPath + '/logs/access-'+appHelper.fullDate+'.log';
   var logMsg = appHelper.utcTime + '\n' + req.method + ': ' + req.headers.host + req.originalUrl + '  | statusCode: ' + res.statusCode + '\n==========/\/\=========== \n\r'
 	appServices({service: 'prependFile', file: logFile, msg: logMsg});
 
